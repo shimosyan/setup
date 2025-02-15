@@ -34,29 +34,6 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-### Git
-export PATH="/usr/local/git/bin:$PATH"
-
-### Anyenv
-if [ -e "$HOME/.anyenv" ]
-then
-    export ANYENV_ROOT="$HOME/.anyenv"
-    export PATH="$ANYENV_ROOT/bin:$PATH"
-    if command -v anyenv 1>/dev/null 2>&1
-    then
-        eval "$(anyenv init -)"
-    fi
-fi
-
-### Brew が Anyenv の python を読み込まないようにする
-alias brew="env PATH=${PATH/\/Users\/${USER}\/\.anyenv\/envs\/pyenv\/shims:/} brew"
-
-### OpenSSL
-export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
-
-### curl
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-
 ### オプション
 
 # 同時に起動しているzshの間でhistoryを共有する

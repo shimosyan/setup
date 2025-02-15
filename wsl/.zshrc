@@ -6,8 +6,7 @@ autoload -Uz compinit && compinit
 # -> https://qiita.com/b4b4r07/items/f37aadef0b3f740e8c14
 
 # Zplug のパスを指定
-# export ZPLUG_HOME=/usr/local/opt/zplug
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
+export ZPLUG_HOME=~/.zplug
 source $ZPLUG_HOME/init.zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh

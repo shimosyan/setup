@@ -59,6 +59,15 @@ echo 'eval "$(anyenv init -)"' >> $HOME/.zprofile
 export PATH="$HOME/.anyenv/bin:$PATH"
 anyenv init -
 
+anyenv install --force-init
+anyenv install pyenv
+anyenv install nodenv
+anyenv install tfenv
+
+pyenv install 3.9.5
+nodenv install 16.15.0
+nodenv global 16.15.0
+
 ### Reboot
 echo "Setup is complete. The machine will restart."
 sudo shutdown -r now

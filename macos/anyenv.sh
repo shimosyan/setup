@@ -1,6 +1,6 @@
 #!/bin/sh
 
-anyenv install --init
+anyenv install --force-init
 anyenv install pyenv
 anyenv install nodenv
 anyenv install tfenv

@@ -69,4 +69,5 @@ nodenv install 16.15.0
 nodenv global 16.15.0
 
 ### Reboot
+echo "Setup is complete. The machine will restart."
 sudo shutdown -r now

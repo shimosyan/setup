@@ -10,6 +10,9 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 # 補足: 元に戻す場合
 #defaults write com.apple.desktopservices DSDontWriteNetworkStores false
 
+# マウスポインタの移動速度を変更
+defaults write -g com.apple.mouse.scaling 0.6875
+
 ### Homebrew
 sudo chown -R $(whoami):admin /usr/local
 sudo chmod -R g+w /usr/local
@@ -40,6 +43,8 @@ brew install awscli
 brew install openssl
 brew install anyenv
 
+brew install karabiner-elements
+
 brew install google-chrome
 brew install 1password
 brew install visual-studio-code
@@ -55,6 +60,10 @@ brew cleanup
 
 ### git
 git config --global core.ignorecase false
+
+### Karabiner Elements
+# macOS 設定 → キーボード → キーボードショートカット → 入力ソース内にある「前の入力ソースを選択」を"F13"に設定すること
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o ~/.config/karabiner/karabiner.json
 
 ### Anyenv
 echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zprofile

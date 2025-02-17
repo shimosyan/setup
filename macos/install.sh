@@ -35,7 +35,10 @@ fi
 echo "Updating homebrew..."
 brew update
 
+echo "Pull Brew Bundle file..."
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o $HOME/.Brewfile
+
+echo "Brew Install from Bundle file..."
 brew bundle --global
 
 echo "Cleaning up brew"

@@ -33,30 +33,14 @@ fi
 echo "Updating homebrew..."
 brew update
 
-brew install git
-brew install curl
-brew install docker
-brew install zplug
-brew install fzy
-brew install jq
-brew install awscli
-brew install openssl
-brew install anyenv
-
-brew install karabiner-elements
-
-brew install google-chrome
-brew install 1password
-brew install visual-studio-code
-brew install iterm2
-brew install clipy
-brew install github
-brew install google-japanese-ime
-brew install google-backup-and-sync
-brew install postman
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o ~/.Brewfile
+brew bundle --global
 
 echo "Cleaning up brew"
 brew cleanup
+
+### zsh
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o ~/.zshrc
 
 ### git
 git config --global core.ignorecase false
@@ -80,9 +64,6 @@ exec $SHELL -l
 pyenv install 3.9.5
 nodenv install 16.15.0
 nodenv global 16.15.0
-
-### zsh
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o ~/.zshrc
 
 ### Reboot
 sudo shutdown -r now

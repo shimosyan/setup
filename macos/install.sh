@@ -57,17 +57,7 @@ curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.
 echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.zprofile
 echo 'eval "$(anyenv init -)"' >> $HOME/.zprofile
 export PATH="$HOME/.anyenv/bin:$PATH"
-anyenv init
-exec $SHELL -l
-
-anyenv install --init
-anyenv install pyenv
-anyenv install nodenv
-anyenv install tfenv
-
-pyenv install 3.9.5
-nodenv install 16.15.0
-nodenv global 16.15.0
+anyenv init -
 
 ### Reboot
 echo "Setup is complete. The machine will restart."

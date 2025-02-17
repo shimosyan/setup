@@ -33,25 +33,25 @@ fi
 echo "Updating homebrew..."
 brew update
 
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o ~/.Brewfile
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o $HOME/.Brewfile
 brew bundle --global
 
 echo "Cleaning up brew"
 brew cleanup
 
 ### zsh
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o ~/.zshrc
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
 
 ### git
 git config --global core.ignorecase false
 
 ### Karabiner Elements
 # macOS 設定 → キーボード → キーボードショートカット → 入力ソース内にある「前の入力ソースを選択」を"F13"に設定すること
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o ~/.config/karabiner/karabiner.json
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
 
 ### Anyenv
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zprofile
-echo 'eval "$(anyenv init -)"' >> ~/.zprofile
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.zprofile
+echo 'eval "$(anyenv init -)"' >> $HOME/.zprofile
 eval "$(anyenv init -)"
 
 anyenv install --init

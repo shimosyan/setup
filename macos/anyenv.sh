@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 pyenv install 3.9.5
 nodenv install 22.14.0

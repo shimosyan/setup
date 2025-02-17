@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # 隠しファイルを表示する
 defaults write com.apple.finder AppleShowAllFiles -boolean true

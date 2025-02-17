@@ -64,12 +64,6 @@ anyenv install pyenv
 anyenv install nodenv
 anyenv install tfenv
 
-exec $SHELL -l
-
-pyenv install 3.9.5
-nodenv install 16.15.0
-nodenv global 16.15.0
-
 ### Reboot
 echo "Setup is complete. The machine will restart."
 sudo shutdown -r now

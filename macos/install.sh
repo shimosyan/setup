@@ -20,6 +20,8 @@ sudo chmod -R g+w /usr/local
 echo "Installing xcode-stuff"
 xcode-select --install
 
+export PATH="/opt/homebrew/bin:$PATH"
+
 if test ! $(which brew); then
   echo "Installing homebrew..."
 
@@ -46,12 +48,12 @@ curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o 
 git config --global core.ignorecase false
 
 ### Karabiner Elements
-# macOS 設定 → キーボード → キーボードショートカット → 入力ソース内にある「前の入力ソースを選択」を"F13"に設定すること
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
 
 ### Anyenv
 echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.zprofile
 echo 'eval "$(anyenv init -)"' >> $HOME/.zprofile
+export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
 
 anyenv install --init

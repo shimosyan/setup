@@ -17,6 +17,9 @@ sudo chmod -R g+w /usr/local
 xcode-select --install
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> $HOME/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew install git
 brew install curl
@@ -47,8 +50,8 @@ anyenv install pyenv
 anyenv install nodenv
 anyenv install tfenv
 
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
-echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.zprofile
+echo 'eval "$(anyenv init -)"' >> ~/.zprofile
 
 exec $SHELL -l
 

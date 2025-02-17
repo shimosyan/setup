@@ -58,8 +58,9 @@ echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.zprofile
 echo 'eval "$(anyenv init -)"' >> $HOME/.zprofile
 export PATH="$HOME/.anyenv/bin:$PATH"
 anyenv init
-anyenv install --init
+exec $SHELL -l
 
+anyenv install --init
 anyenv install pyenv
 anyenv install nodenv
 anyenv install tfenv

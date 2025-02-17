@@ -16,7 +16,7 @@ sudo chmod -R g+w /usr/local
 
 xcode-select --install
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew install git
 brew install curl
@@ -28,11 +28,11 @@ brew install awscli
 brew install openssl
 brew install anyenv
 
-brew install clipy
+brew install google-chrome
 brew install 1password
 brew install visual-studio-code
-brew install google-chrome
 brew install iterm2
+brew install clipy
 brew install github
 brew install google-japanese-ime
 brew install google-backup-and-sync
@@ -55,6 +55,9 @@ exec $SHELL -l
 pyenv install 3.9.5
 nodenv install 16.15.0
 nodenv global 16.15.0
+
+### zsh
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o ~/.zshrc
 
 ### Reboot
 reboot

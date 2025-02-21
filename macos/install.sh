@@ -1,14 +1,13 @@
 #!/bin/bash
 
 ### Homebrew
-echo ""
-echo "#"
-echo "# Homebrew..."
-echo "#"
 sudo chown -R $(whoami):admin /usr/local
 sudo chmod -R g+w /usr/local
 
-echo "Installing xcode-stuff"
+echo ""
+echo "#"
+echo "# Installing xcode-stuff..."
+echo "#"
 xcode-select --install
 
 export PATH="/opt/homebrew/bin:$PATH"
@@ -32,17 +31,26 @@ echo "# Updating homebrew..."
 echo "#"
 brew update
 
-echo ""
-echo "#"
-echo "# Pull Brew Bundle file..."
-echo "#"
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o $HOME/.Brewfile
+brew_install(){
+  echo ""
+  echo "#"
+  echo "# Pull Brew Bundle file..."
+  echo "#"
+  curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o $HOME/.Brewfile
 
-echo ""
-echo "#"
-echo "Brew Install from Bundle file..."
-echo "#"
-brew bundle --global
+  echo ""
+  echo "#"
+  echo "Brew Install from Bundle file..."
+  echo "#"
+  brew bundle --global
+}
+
+# 各プロセスをバックグラウンドで起動
+brew_install &
+pid1=$!
+
+# 各プロセスの終了を待つ
+wait $pid1
 
 echo ""
 echo "#"

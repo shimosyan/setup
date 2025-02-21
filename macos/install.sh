@@ -4,11 +4,20 @@
 sudo chown -R $(whoami):admin /usr/local
 sudo chmod -R g+w /usr/local
 
-echo ""
-echo "#"
-echo "# Installing xcode-stuff..."
-echo "#"
-xcode-select --install
+xcode_select_install(){
+  echo ""
+  echo "#"
+  echo "# Installing xcode-stuff..."
+  echo "#"
+  xcode-select --install
+}
+
+# プロセスをバックグラウンドで起動
+xcode_select_install &
+pid0=$!
+
+# プロセスの終了を待つ
+wait $pid0
 
 export PATH="/opt/homebrew/bin:$PATH"
 
@@ -45,11 +54,11 @@ brew_install(){
   brew bundle --global
 }
 
-# 各プロセスをバックグラウンドで起動
+# プロセスをバックグラウンドで起動
 brew_install &
 pid1=$!
 
-# 各プロセスの終了を待つ
+# プロセスの終了を待つ
 wait $pid1
 
 echo ""

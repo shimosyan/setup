@@ -85,11 +85,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # マウスポインタの移動速度を変更
 defaults write -g com.apple.mouse.scaling 0.6875
 
-# タップしたときクリックを有効化
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
 # Fnキーを標準のファンクションキーとして使用
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 
@@ -97,7 +92,14 @@ defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # 日付と時刻のフォーマット（24時間表示、秒表示あり、日付・曜日を表示）
-defaults write com.apple.menuextra.clock DateFormat -string "M\u6708d\u65e5(EEE)  H:mm:ss"
+defaults write com.apple.menuextra.clock FlashDateSeparators -bool true
+defaults write com.apple.menuextra.clock ShowAMPM -bool true
+defaults write com.apple.menuextra.clock ShowDate -bool true
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
+defaults write com.apple.menuextra.clock ShowSeconds -bool true
+
+# Dock のアプリ提案を無効化
+defaults write com.apple.dock show-recents -bool false
 
 ### git
 echo ""

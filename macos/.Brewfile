@@ -8,6 +8,7 @@ brew "openssl@3"
 brew "awscli"
 brew "docker"
 brew "grep"
+brew "gh"
 
 cask "google-chrome"
 cask "1password"

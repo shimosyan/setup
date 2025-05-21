@@ -129,6 +129,7 @@ anyenv install --force-init
 anyenv install pyenv
 anyenv install nodenv
 anyenv install tfenv
+anyenv install goenv
 
 ### Reboot
 echo ""

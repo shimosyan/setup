@@ -131,6 +131,14 @@ anyenv install nodenv
 anyenv install tfenv
 anyenv install goenv
 
+# goenv 向けの設定
+echo 'export PATH="$HOME/.anyenv/envs/goenv/bin:$PATH"' >> $HOME/.zprofile
+export PATH="$HOME/.anyenv/envs/goenv/bin:$PATH"
+
+echo 'export PATH="$HOME/.anyenv/envs/goenv/shims:$PATH"' >> $HOME/.zprofile
+export PATH="$HOME/.anyenv/envs/goenv/shims:$PATH"
+
+
 ### Reboot
 echo ""
 echo "#"

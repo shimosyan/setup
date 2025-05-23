@@ -10,7 +10,3 @@ nodenv global 22.14.0
 # Terraform
 tfenv install latest
 tfenv use latest
-
-# Golang
-goenv install latest
-goenv global latest

@@ -9,6 +9,7 @@ brew "awscli"
 brew "docker"
 brew "grep"
 brew "gh"
+brew "go"
 
 cask "google-chrome"
 cask "1password"

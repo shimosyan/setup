@@ -57,6 +57,9 @@ export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
 ### curl
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
+### Golang
+export PATH=$PATH:/usr/local/go/bin
+
 ### オプション
 
 # 同時に起動しているzshの間でhistoryを共有する

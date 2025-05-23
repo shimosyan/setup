@@ -58,7 +58,8 @@ export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 ### Golang
-export PATH=$PATH:/usr/local/go/bin
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
 ### オプション
 

@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "List(*)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test)",
+      "Bash(npm run test:*)",
+      "Bash(npm run build)",
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(builtin cd:*)",
+      "Bash(rg:*)",
+      "Bash(mv:*)",
+      "Bash(echo:*)",
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(pwd:*)",
+      "Bash(cd:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(tree:*)",
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(git diff:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(gh pr view:*)",
+      "Bash(terraform:*)",
+      "Bash(go build:*)",
+      "Bash(go test:*)",
+      "Fetch(https://*)",
+      "WebFetch(domain:avd.aquasec.com)"
+    ],
+    "deny": [
+      "Bash(cd:*)"
+    ]
+  }
+}

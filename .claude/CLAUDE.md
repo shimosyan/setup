@@ -26,14 +26,14 @@
 
 ### Git Commit
 
-- コミットには署名鍵のパスフレーズを付与した署名が必要のため、コミット操作は不要です。ただし、ユーザーにてコミットするのでコミットメッセージの提案をするようにしてください。
+- コミットには署名鍵のパスフレーズを付与した署名が必要のため、**コミット操作はしないでください。**ただし、ユーザーにてコミットするのでコミットメッセージの提案をするようにしてください。
 - コミットメッセージは日本語にしてください
 - さらにコミットメッセージには `feat(foo): ...` のようにsemantic commit messageを使うこと
 - コミットメッセージの下に利用したプロンプトを `prompt:` から始めて書いてください
 
 ### Pull Request
 
-- Pull Request は Draft Pull Request を書いてください。
+- **Pull Request は Draft Pull Request を書いてください。**
 
 ### Terraform
 
@@ -108,3 +108,34 @@
 ## Long Task Execution
 
 - 長時間かかるタスク（ビルド、テスト実行、大量のファイル処理など）を実行する際は、caffeinate-mcpを使用してシステムがスリープしないようにする
+
+## GitHub CLI Usage Guidelines 🐙
+
+### Use gh Commands for All GitHub Operations
+
+For any GitHub-related browsing or operations, **MUST use gh commands** instead of WebFetch or manual URL access.
+
+#### Common gh Commands
+
+- **Pull Requests**: `gh pr view`, `gh pr create`, `gh pr edit`, `gh pr status`
+- **Issues**: `gh issue view`, `gh issue create`, `gh issue edit`, `gh issue list`
+- **Comments**: `gh pr comment`, `gh issue comment`
+- **Actions**: `gh run list`, `gh run view`, `gh run watch`
+- **Repository**: `gh repo view`, `gh repo clone`
+
+#### Examples
+
+    # View PR details
+    gh pr view 123
+
+    # Watch PR status
+    gh pr status
+
+    # View GitHub Actions logs
+    gh run view 456 --log
+
+    # Watch CI run until completion (useful after pushing)
+    gh run watch
+
+    # Create draft PR
+    gh pr create --draft --title "feat: add new feature" --body "Description here"

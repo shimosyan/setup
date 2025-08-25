@@ -33,6 +33,11 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
+### 環境変数
+
+# ブラウザの設定
+export BROWSER='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
+
 ### オプション
 
 # 同時に起動しているzshの間でhistoryを共有する

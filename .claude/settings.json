@@ -37,7 +37,7 @@
     ],
     "deny": [
       "Bash(cd:*)",
-      "Bash(gh api:*)",
+      "Bash(gh api:*)"
     ]
   },
   "feedbackSurveyState": {

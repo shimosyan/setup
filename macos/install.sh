@@ -101,6 +101,12 @@ defaults write com.apple.menuextra.clock ShowSeconds -bool true
 # Dock のアプリ提案を無効化
 defaults write com.apple.dock show-recents -bool false
 
+# Dock の位置を左側に変更
+defaults write com.apple.dock orientation -string "left"
+
+# Dock を再起動
+killall Dock
+
 ### git
 echo ""
 echo "#"

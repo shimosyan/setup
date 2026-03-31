@@ -70,7 +70,7 @@ echo "# macOS settings..."
 echo "#"
 
 # 隠しファイルを表示する
-defaults write com.apple.finder AppleShowAllFiles -boolean true
+defaults write com.apple.finder AppleShowAllFiles -bool true
 # 補足: 元に戻す場合
 #defaults delete com.apple.finder AppleShowAllFiles
 

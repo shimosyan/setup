@@ -10,6 +10,7 @@ brew "docker"
 brew "grep"
 brew "gh"
 brew "go"
+brew "pnpm"
 
 cask "google-chrome"
 cask "1password"

@@ -1,3 +1,6 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 ### 補完機能を有効化
 autoload -Uz compinit && compinit
 
@@ -89,3 +92,6 @@ setopt prompt_subst
 TMOUT=1
 TRAPALRM() {zle reset-prompt}
 RPROMPT="%F{white} %D{%Y-%m-%d %H:%M:%S} %f"
+
+# GPG署名関連の設定
+export GPG_TTY=$TTY

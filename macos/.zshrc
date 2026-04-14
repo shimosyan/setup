@@ -51,9 +51,6 @@ then
     fi
 fi
 
-### Brew が Anyenv の python を読み込まないようにする
-alias brew="env PATH=${PATH/\/Users\/${USER}\/\.anyenv\/envs\/pyenv\/shims:/} brew"
-
 ### OpenSSL
 export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
 

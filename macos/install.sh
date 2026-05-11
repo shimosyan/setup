@@ -70,7 +70,7 @@ echo ""
 echo "#"
 echo "# mise settings..."
 echo "#"
-mkdir $HOME/.config/mise
+mkdir -p $HOME/.config/mise
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/mise.toml -o $HOME/.config/mise/config.toml
 /opt/homebrew/bin/mise install
 echo "complete..."

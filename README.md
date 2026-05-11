@@ -29,6 +29,12 @@ export HOMEBREW_BUNDLE_TAP_SKIP="quux"
 export HOMEBREW_BUNDLE_CASK_SKIP="google-chrome 1password"
 ```
 
+#### iTerm2
+
+フォントの設定を変更すること
+
+Settings → Profiles → Text → Font にて "FiraCode Nerd Font Mono" に変更する
+
 #### Karabiner-Elements
 
 macOS 設定 → キーボード → キーボードショートカット → 入力ソース内にある「前の入力ソースを選択」を"F13"に設定すること

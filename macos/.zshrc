@@ -13,6 +13,7 @@ autoload -Uz compinit
 compinit -C
 
 ### zoxide
+export _ZO_FZF_OPTS='--smart-case'
 eval "$(zoxide init zsh)"
 
 # mise

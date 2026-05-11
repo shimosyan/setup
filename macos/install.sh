@@ -16,6 +16,7 @@ if test ! $(which brew); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  echo "complete..."
 fi
 
 echo ""
@@ -23,6 +24,7 @@ echo "#"
 echo "# Updating homebrew..."
 echo "#"
 brew update
+echo "complete..."
 
 brew_install(){
   echo ""
@@ -30,12 +32,14 @@ brew_install(){
   echo "# Pull Brew Bundle file..."
   echo "#"
   curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o $HOME/.Brewfile
+  echo "complete..."
 
   echo ""
   echo "#"
   echo "Brew Install from Bundle file..."
   echo "#"
   brew bundle --global
+  echo "complete..."
 }
 
 # プロセスをバックグラウンドで起動
@@ -50,6 +54,7 @@ echo "#"
 echo "# Cleaning up brew"
 echo "#"
 brew cleanup
+echo "complete..."
 
 ### zsh
 
@@ -60,6 +65,7 @@ echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
 chmod 755 /usr/local/share/zsh/site-functions
 chmod 755 /usr/local/share/zsh
+echo "complete..."
 
 ### mise
 echo ""
@@ -69,6 +75,7 @@ echo "#"
 eval "$(mise activate zsh)"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/mise.toml -o $HOME/.config/mise/config.toml
 mise install
+echo "complete..."
 
 ### macOS Settings
 echo ""
@@ -114,12 +121,15 @@ defaults write com.apple.dock orientation -string "left"
 # Dock を再起動
 killall Dock
 
+echo "complete..."
+
 ### git
 echo ""
 echo "#"
 echo "# Git settings..."
 echo "#"
 git config --global core.ignorecase false
+echo "complete..."
 
 ### Karabiner Elements
 echo ""
@@ -127,6 +137,7 @@ echo "#"
 echo "# Karabiner Elements settings..."
 echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
+echo "complete..."
 
 ### Reboot
 echo ""

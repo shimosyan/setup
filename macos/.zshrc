@@ -1,15 +1,15 @@
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-### 補完機能を有効化
-autoload -Uz compinit && compinit
-
 ### sheldon
 ### ZSH Plugins
 ### .config/sheldon/plugins.toml
 if command -v sheldon >/dev/null 2>&1; then
   eval "$(sheldon source)"
 fi
+
+### 補完機能を有効化
+autoload -Uz compinit && compinit
 
 ### zoxide
 eval "$(zoxide init zsh)"

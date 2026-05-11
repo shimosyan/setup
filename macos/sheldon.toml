@@ -1,0 +1,22 @@
+shell = "zsh"
+
+[plugins.git_ohmyzsh]
+github = "ohmyzsh/ohmyzsh"
+dir    = "plugins/git"
+apply  = ["source"]
+
+[plugins.zsh_autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh_completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh_history_substring_search]
+github = "zsh-users/zsh-history-substring-search"
+
+[plugins.zsh_syntax_highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.enhancd]
+github = "b4b4r07/enhancd"
+use    = ["init.sh"]

@@ -65,6 +65,16 @@ echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
 echo "complete..."
 
+### sheldon
+
+echo ""
+echo "#"
+echo "# sheldon settings..."
+echo "#"
+mkdir -p $HOME/.config/sheldon
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/sheldon.toml -o $HOME/.config/sheldon/plugins.toml
+echo "complete..."
+
 ### mise
 echo ""
 echo "#"

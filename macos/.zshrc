@@ -17,6 +17,12 @@ fi
 autoload -Uz compinit
 compinit -C
 
+### History 検索をデフォルトの挙動にする
+bindkey '^[[A' up-line-or-history
+bindkey '^[[B' down-line-or-history
+bindkey '^[OA' up-line-or-history
+bindkey '^[OB' down-line-or-history
+
 ### zoxide
 export _ZO_FZF_OPTS='--smart-case'
 eval "$(zoxide init zsh)"

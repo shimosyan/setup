@@ -9,9 +9,6 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.zsh_completions]
 github = "zsh-users/zsh-completions"
 
-[plugins.zsh_history_substring_search]
-github = "zsh-users/zsh-history-substring-search"
-
 # zsh_syntax_highlighting は最後に書く
 
 [plugins.zsh_syntax_highlighting]

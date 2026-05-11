@@ -1,6 +1,6 @@
 brew "git"
 brew "fzy"
-brew "zplug"
+brew "sheldon"
 brew "jq"
 brew "curl"
 brew "mise"

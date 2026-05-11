@@ -9,7 +9,8 @@ if command -v sheldon >/dev/null 2>&1; then
 fi
 
 ### 補完機能を有効化
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit -C
 
 ### zoxide
 eval "$(zoxide init zsh)"

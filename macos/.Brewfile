@@ -1,5 +1,6 @@
 brew "git"
-brew "fzy"
+brew "fzf"
+brew "zoxide"
 brew "sheldon"
 brew "jq"
 brew "curl"

@@ -1,8 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(builtin cd:*)",
       "Bash(ls:*)",
+      "Bash(cd:*)",
       "Bash(npm run lint)",
       "Bash(npm run lint:*)",
       "Bash(npm run test)",
@@ -38,7 +38,6 @@
       "WebFetch(domain:avd.aquasec.com)"
     ],
     "deny": [
-      "Bash(cd:*)",
       "Bash(gh api:*)"
     ]
   },

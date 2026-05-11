@@ -11,11 +11,14 @@ if command -v sheldon >/dev/null 2>&1; then
   eval "$(sheldon source)"
 fi
 
+### zoxide
+eval "$(zoxide init zsh)"
+
+# mise
+eval "$(mise activate zsh)"
+
 ### Git
 export PATH="/usr/local/git/bin:$PATH"
-
-### mise
-eval "$(mise activate zsh)"
 
 ### OpenSSL
 export PATH="/opt/homebrew/opt/openssl/bin:$PATH"

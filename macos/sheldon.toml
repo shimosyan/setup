@@ -1,9 +1,7 @@
 shell = "zsh"
 
-[plugins.git_ohmyzsh]
+[plugins.oh-my-zsh]
 github = "ohmyzsh/ohmyzsh"
-dir    = "plugins/git"
-apply  = ["source"]
 
 [plugins.zsh_autosuggestions]
 github = "zsh-users/zsh-autosuggestions"

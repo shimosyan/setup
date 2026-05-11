@@ -33,7 +33,7 @@ export HOMEBREW_BUNDLE_CASK_SKIP="google-chrome 1password"
 
 フォントの設定を変更すること
 
-Settings → Profiles → Text → Font にて "Hack Nerd Font Mono" に変更する
+Settings → Profiles → Text → Font にて "RobotoMono Nerd Font" に変更する
 
 #### Karabiner-Elements
 

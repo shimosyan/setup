@@ -14,7 +14,7 @@ brew "gh"
 brew "go"
 brew "pnpm"
 
-cask "font-Hack-nerd-font"
+cask "font-roboto-mono-nerd-font"
 cask "google-chrome"
 cask "1password"
 cask "visual-studio-code"

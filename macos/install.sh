@@ -65,6 +65,16 @@ echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
 echo "complete..."
 
+### starship
+
+echo ""
+echo "#"
+echo "# starship settings..."
+echo "#"
+mkdir -p $HOME/.config
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/starship.toml -o $HOME/.config/starship.toml
+echo "complete..."
+
 ### sheldon
 
 echo ""

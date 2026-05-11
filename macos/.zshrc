@@ -6,11 +6,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ### .config/sheldon/plugins.toml
 if command -v sheldon >/dev/null 2>&1; then
   eval "$(sheldon source)"
-
-  # Setting THEME
-  # see https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#enabling-plugins
-  ZSH_THEME="robbyrussell" plugins=(git npm macos) eval "$(sheldon source)"
-  echo $ZSH_THEME
 fi
 
 ### 補完機能を有効化
@@ -22,6 +17,9 @@ bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
 bindkey '^[OA' up-line-or-history
 bindkey '^[OB' down-line-or-history
+
+### starship
+eval "$(starship init zsh)"
 
 ### zoxide
 export _ZO_FZF_OPTS='--smart-case'

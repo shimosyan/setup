@@ -64,11 +64,5 @@ setopt auto_cd
 # コマンドのスペルミスを指摘
 setopt correct
 
-# タイムスタンプを表示
-setopt prompt_subst
-TMOUT=1
-TRAPALRM() {zle reset-prompt}
-RPROMPT="%F{white} %D{%Y-%m-%d %H:%M:%S} %f"
-
 # GPG署名関連の設定
 export GPG_TTY=$TTY

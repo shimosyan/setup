@@ -70,7 +70,7 @@ echo ""
 echo "#"
 echo "# mise settings..."
 echo "#"
-eval "$(mise activate zsh)"
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/mise.toml -o $HOME/.config/mise/config.toml
 mise install
 echo "complete..."

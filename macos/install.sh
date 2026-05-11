@@ -63,8 +63,6 @@ echo "#"
 echo "# zsh settings..."
 echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
-chmod 755 /usr/local/share/zsh/site-functions
-chmod 755 /usr/local/share/zsh
 echo "complete..."
 
 ### mise

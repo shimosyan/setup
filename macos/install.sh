@@ -147,9 +147,8 @@ echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
 echo "complete..."
 
-### Reboot
+### Complete
 echo ""
 echo "#"
-echo "# Setup is complete. The machine will restart."
+echo "# Setup is complete."
 echo "#"
-sudo shutdown -r now

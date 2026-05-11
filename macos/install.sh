@@ -15,8 +15,6 @@ if test ! $(which brew); then
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  echo >> $HOME/.zprofile
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -62,6 +60,14 @@ echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
 chmod 755 /usr/local/share/zsh/site-functions
 chmod 755 /usr/local/share/zsh
+
+### mise
+echo ""
+echo "#"
+echo "# mise settings..."
+echo "#"
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/mise.toml -o $HOME/.config/mise/config.toml
+mise install
 
 ### macOS Settings
 echo ""
@@ -120,21 +126,6 @@ echo "#"
 echo "# Karabiner Elements settings..."
 echo "#"
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
-
-### Anyenv
-echo ""
-echo "#"
-echo "# Anyenv settings..."
-echo "#"
-echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> $HOME/.zprofile
-echo 'eval "$(anyenv init -)"' >> $HOME/.zprofile
-export PATH="$HOME/.anyenv/bin:$PATH"
-anyenv init -
-
-anyenv install --force-init
-anyenv install pyenv
-anyenv install nodenv
-anyenv install tfenv
 
 ### Reboot
 echo ""

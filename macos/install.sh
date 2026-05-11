@@ -36,7 +36,7 @@ brew_install(){
 
   echo ""
   echo "#"
-  echo "Brew Install from Bundle file..."
+  echo "# Brew Install from Bundle file..."
   echo "#"
   brew bundle --global
   echo "complete..."

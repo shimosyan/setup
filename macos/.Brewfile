@@ -1,6 +1,7 @@
 brew "git"
 brew "fzf"
 brew "zoxide"
+brew "eza"
 brew "starship"
 brew "sheldon"
 brew "jq"

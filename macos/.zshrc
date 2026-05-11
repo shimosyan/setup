@@ -21,6 +21,11 @@ bindkey '^[OB' down-line-or-history
 ### starship
 eval "$(starship init zsh)"
 
+### eza
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -la --icons --group-directories-first --git'
+alias lt='eza --tree --level=2 --icons'
+
 ### zoxide
 export _ZO_FZF_OPTS='--smart-case'
 eval "$(zoxide init zsh)"

@@ -10,12 +10,6 @@
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/install.sh | sh -s
 ```
 
-上記コマンドが終わったら、再起動後に下記コマンドを実行すること
-
-```bash
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/anyenv.sh | sh -s
-```
-
 ### memo
 
 #### Homebrew

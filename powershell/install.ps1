@@ -67,8 +67,6 @@ if (!(Test-Path -Path $starshipConfigDir)) {
 Invoke-WebRequest -Uri $starshipConfigUrl -OutFile $starshipConfigPath
 Write-Output "Starship config installed at $starshipConfigPath"
 
-
-
 Write-Output ""
 Write-Output "#"
 Write-Output "# Setting up Developer Tools by mise..."

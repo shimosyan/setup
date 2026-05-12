@@ -82,7 +82,7 @@ echo "#"
 echo "# sheldon settings..."
 echo "#"
 mkdir -p $HOME/.config/sheldon
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/sheldon.toml -o $HOME/.config/sheldon/plugins.toml
+curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/sheldon.toml -o $HOME/.config/sheldon/plugins.toml
 echo "complete..."
 
 ### mise

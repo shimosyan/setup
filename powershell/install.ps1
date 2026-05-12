@@ -72,7 +72,7 @@ Write-Output "#"
 Write-Output "# Setting up Developer Tools by mise..."
 Write-Output "#"
 $miseConfigUrl = "https://raw.githubusercontent.com/shimosyan/setup/main/mise.toml"
-$miseConfigDir = Join-Path $HOME ".config" "mise"
+$miseConfigDir = Join-Path (Join-Path $HOME ".config") "mise"
 $miseConfigPath = Join-Path $miseConfigDir "config.toml"
 
 if (!(Test-Path -Path $miseConfigDir)) {

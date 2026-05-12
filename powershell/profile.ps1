@@ -26,6 +26,11 @@ function lt { eza --tree --level=2 --icons @args }
 Set-PSReadlineOption -HistoryNoDuplicates
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -Colors @{
+    Command  = "`e[92m"
+    Keyword  = "`e[93m"
+    Variable = "`e[93m"
+}
 
 #
 # mise

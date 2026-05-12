@@ -55,5 +55,25 @@ if (!(Test-Path -Path $starshipConfigDir)) {
 Invoke-WebRequest -Uri $starshipConfigUrl -OutFile $starshipConfigPath
 Write-Output "Starship config installed at $starshipConfigPath"
 
+
+
+Write-Output ""
+Write-Output "#"
+Write-Output "# Setting up Developer Tools by mise..."
+Write-Output "#"
+$miseConfigUrl = "https://raw.githubusercontent.com/shimosyan/setup/main/mise.toml"
+$miseConfigDir = Join-Path $HOME ".config" "mise"
+$miseConfigPath = Join-Path $starshipConfigDir "config.toml"
+
+if (!(Test-Path -Path $miseConfigDir)) {
+    New-Item -ItemType Directory -Force -Path $miseConfigDir
+}
+
+Invoke-WebRequest -Uri $miseConfigUrl -OutFile $miseConfigPath
+& "$HOME\AppData\Local\Microsoft\WinGet\Packages\jdx.mise_Microsoft.Winget.Source_8wekyb3d8bbwe\mise\bin\mise.exe" "install"
+
+Write-Output "mise config installed at $miseConfigPath"
+
+
 Write-Output ""
 Write-Output "--- Setup Complete ---"

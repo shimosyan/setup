@@ -56,7 +56,7 @@ PowerShell 7.x 系の環境をセットアップする
 下記コマンドを実機の Microsoft PowerShell（PowerShell 5.x 系）もしくは PowerShell 7.x 系にコピペして実行
 
 ```powershell
-function Invoke-RemoteScript($url){$script = (New-Object Net.WebClient).DownloadString($url);Invoke-Expression($script)};Invoke-RemoteScript 'https://raw.githubusercontent.com/shimosyan/setup/main/powershell/install.ps1'
+powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; iex (irm 'https://raw.githubusercontent.com/shimosyan/setup/main/powershell/install.ps1')"
 ```
 
 スクリプトの実行が終わったら、下記の設定を変更すること

@@ -7,6 +7,7 @@ $packages = @(
     "junegunn.fzf",
     "ajeetdsouza.zoxide",
     "eza-community.eza",
+    "jdx.mise",
     "Starship.Starship"
 )
 

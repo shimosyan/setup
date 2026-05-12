@@ -10,9 +10,7 @@
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/install.sh | sh -s
 ```
 
-### memo
-
-#### Homebrew
+### Homebrew
 
 Homebrew でインストールするアプリケーションが既に導入済みの環境の場合はスクリプトがエラーになる可能性がある。そのため、下記で例を挙げた環境変数コマンドで特定のアプリケーションを除外するようにしておくこと
 
@@ -29,17 +27,17 @@ export HOMEBREW_BUNDLE_TAP_SKIP="quux"
 export HOMEBREW_BUNDLE_CASK_SKIP="google-chrome 1password"
 ```
 
-#### iTerm2
+### iTerm2
 
 フォントの設定を変更すること
 
 Settings → Profiles → Text → Font にて "RobotoMono Nerd Font" に変更する
 
-#### Karabiner-Elements
+### Karabiner-Elements
 
 macOS 設定 → キーボード → キーボードショートカット → 入力ソース内にある「前の入力ソースを選択」を"F13"に設定すること
 
-#### Maccy
+### Maccy
 
 環境設定で以下の項目を変更すること
 
@@ -58,3 +56,12 @@ curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/wsl/install.sh |
 ```powershell
 function Invoke-RemoteScript($url){$script = (New-Object Net.WebClient).DownloadString($url);Invoke-Expression($script)};Invoke-RemoteScript 'https://raw.githubusercontent.com/shimosyan/setup/main/powershell/install.ps1'
 ```
+
+### Windows ターミナルの設定変更
+
+設定内の項目を以下の通りに変更
+
+- スタートアップ
+  - 既定のプロファイルを "Microsoft PowerShell" から、 PowerShell 7 にあたる "PowerShell"に変更
+- プロファイル → PowerShell
+  - "外観" からフォントフェイスを "RobotoMono Nerd Font" に変更

@@ -1,6 +1,17 @@
 #!/bin/bash
 
+# Apt update
+echo "#"
+echo "# Apt update..."
+echo "#"
+
+sudo apt update
+sudo apt install -y gpg
+
+echo "complete..."
+
 # ZSH
+echo ""
 echo "#"
 echo "# ZSH setup..."
 echo "#"
@@ -36,6 +47,21 @@ curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
 mkdir -p $HOME/.config/sheldon
 
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/sheldon.toml -o $HOME/.config/sheldon/plugins.toml
+
+echo "complete..."
+
+# eza
+echo ""
+echo "#"
+echo "# eza settings..."
+echo "#"
+
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+sudo apt update
+sudo apt install -y eza
 
 echo "complete..."
 

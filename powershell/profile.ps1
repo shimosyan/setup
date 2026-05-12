@@ -18,7 +18,7 @@ Invoke-Expression (& { (zoxide init powershell | Out-String) })
 if (Test-Path Alias:ls) { Remove-Item Alias:ls -Force } # Remove ls Alias
 function ls { eza --icons --group-directories-first @args }
 function ll { eza -la --icons --group-directories-first --git @args }
-function lt { eza --tree --level=2 --icons @args }
+function lt { eza --tree --level=2 --icons --group-directories-first @args }
 
 #
 # PSReadLine

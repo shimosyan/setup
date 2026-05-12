@@ -112,7 +112,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 #defaults write com.apple.desktopservices DSDontWriteNetworkStores false
 
 ## 未確認のアプリケーションを実行する際のダイアログを無効にする
-defaults write com.apple.LaunchServices LSQuarantine -bool false 
+defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # マウスポインタの移動速度を変更
 defaults write -g com.apple.mouse.scaling 0.6875

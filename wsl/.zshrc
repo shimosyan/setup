@@ -19,6 +19,11 @@ bindkey '^[OB' down-line-or-history
 ### starship
 eval "$(starship init zsh)"
 
+### eza
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -la --icons --group-directories-first --git'
+alias lt='eza --tree --level=2 --icons --group-directories-first'
+
 ### ブラウザの設定
 export BROWSER='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
 

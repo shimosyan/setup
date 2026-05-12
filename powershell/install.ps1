@@ -1,49 +1,35 @@
 Write-Output "#"
-Write-Output "# Install Powershell..."
+Write-Output "# Install tools via winget..."
 Write-Output "#"
 
-winget install -e --id Microsoft.PowerShell --accept-package-agreements --accept-source-agreements
-
-Write-Output ""
-Write-Output "#"
-Write-Output "# Install Zoxide..."
-Write-Output "#"
-
-winget install -e --id ajeetdsouza.zoxide --accept-package-agreements --accept-source-agreements
+$packages = @("Microsoft.PowerShell", "ajeetdsouza.zoxide", "eza-community.eza", "Starship.Starship")
+foreach ($pkg in $packages) {
+    winget install -e --id $pkg --accept-package-agreements --accept-source-agreements --silent
+}
 
 Write-Output ""
 Write-Output "#"
-Write-Output "# Install eza..."
-Write-Output "#"
-
-winget install -e --id eza-community.eza --accept-package-agreements --accept-source-agreements
-
-Write-Output ""
-Write-Output "#"
-Write-Output "# Install Starship..."
-Write-Output "#"
-
-winget install -e --id Starship.Starship --accept-package-agreements --accept-source-agreements
-
-Write-Output ""
-Write-Output "#"
-Write-Output "# Setting up PowerShell Profile..."
+Write-Output "# Setting up PowerShell 7 Profile..."
 Write-Output "#"
 
 $pwshProfileUrl = "https://raw.githubusercontent.com/shimosyan/setup/main/powershell/profile.ps1"
 
-$pwshProfileDir = Split-Path -Parent $PROFILE
-$pwshProfilePath = "$pwshProfileDir\Microsoft.Powershell_profile.ps1"
+$userDocuments = [Environment]::GetFolderPath('MyDocuments')
+$ps7ProfileDir = Join-Path $userDocuments "PowerShell"
+$ps7ProfilePath = Join-Path $ps7ProfileDir "Microsoft.PowerShell_profile.ps1"
 
-if (!(Test-Path -Path $pwshProfileDir)) {
-    Write-Output "Creating directory: $pwshProfileDir"
-    New-Item -ItemType Directory -Force -Path $pwshProfileDir
+if (!(Test-Path -Path $ps7ProfileDir)) {
+    Write-Output "Creating directory: $ps7ProfileDir"
+    New-Item -ItemType Directory -Force -Path $ps7ProfileDir
 }
 
-Write-Output "Downloading profile from $pwshProfileUrl ..."
-Invoke-WebRequest -Uri $pwshProfileUrl -OutFile $pwshProfilePath
-
-Write-Output "PowerShell Profile installed at $pwshProfilePath"
+Write-Output "Downloading profile to $ps7ProfilePath ..."
+try {
+    Invoke-WebRequest -Uri $pwshProfileUrl -OutFile $ps7ProfilePath -ErrorAction Stop
+    Write-Output "Success!"
+} catch {
+    Write-Error "Failed to download profile: $_"
+}
 
 Write-Output ""
 Write-Output "#"
@@ -51,16 +37,15 @@ Write-Output "# Setting up Starship Config..."
 Write-Output "#"
 
 $starshipConfigUrl = "https://raw.githubusercontent.com/shimosyan/setup/main/starship.toml"
-
-$starshipConfigDir = "$HOME\.config"
-$starshipConfigPath = "$starshipConfigDir\starship.toml"
+$starshipConfigDir = Join-Path $HOME ".config"
+$starshipConfigPath = Join-Path $starshipConfigDir "starship.toml"
 
 if (!(Test-Path -Path $starshipConfigDir)) {
-    Write-Output "Creating directory: $starshipConfigDir"
     New-Item -ItemType Directory -Force -Path $starshipConfigDir
 }
 
-Write-Output "Downloading Starship config..."
 Invoke-WebRequest -Uri $starshipConfigUrl -OutFile $starshipConfigPath
-
 Write-Output "Starship config installed at $starshipConfigPath"
+
+Write-Output ""
+Write-Output "--- Setup Complete ---"

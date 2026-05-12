@@ -29,6 +29,10 @@ export HOMEBREW_BUNDLE_CASK_SKIP="google-chrome 1password"
 
 スクリプトの実行が終わったら、下記の設定を変更すること
 
+### Nerd Font のインストール
+
+[配布先](https://www.nerdfonts.com/font-downloads) から "RobotoMono Nerd Font" をダウンロード＆インストールすること
+
 ### iTerm2
 
 フォントの設定を変更する

@@ -19,6 +19,7 @@ Write-Output "#"
 $pwshProfileUrl = "https://raw.githubusercontent.com/shimosyan/setup/main/powershell/profile.ps1"
 
 $pwshProfileDir = Split-Path -Parent $PROFILE
+$pwshProfilePath = "$starshipConfigDir\Microsoft.Powershell_profile.ps1"
 
 if (!(Test-Path -Path $pwshProfileDir)) {
     Write-Output "Creating directory: $pwshProfileDir"
@@ -26,9 +27,9 @@ if (!(Test-Path -Path $pwshProfileDir)) {
 }
 
 Write-Output "Downloading profile from $pwshProfileUrl ..."
-Invoke-WebRequest -Uri $pwshProfileUrl -OutFile $PROFILE
+Invoke-WebRequest -Uri $pwshProfileUrl -OutFile $pwshProfilePath
 
-Write-Output "Done!"
+Write-Output "PowerShell Profile installed at $pwshProfilePath"
 
 Write-Output ""
 Write-Output "#"

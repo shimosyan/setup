@@ -2,7 +2,7 @@
 
 ## macOS
 
-Zsh の環境をセットアップする
+zsh の環境をセットアップする
 
 下記コマンドを実機のターミナルにコピペして実行
 
@@ -74,7 +74,7 @@ function Invoke-RemoteScript($url){$script = (New-Object Net.WebClient).Download
 
 ### WSL2
 
-Zsh の環境をセットアップする
+zsh の環境をセットアップする
 
 下記コマンドを実機のターミナルにコピペして実行
 

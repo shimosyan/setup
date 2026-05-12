@@ -6,6 +6,20 @@ winget install -e --id Microsoft.PowerShell --accept-package-agreements --accept
 
 Write-Output ""
 Write-Output "#"
+Write-Output "# Install Zoxide..."
+Write-Output "#"
+
+winget install -e --id ajeetdsouza.zoxide --accept-package-agreements --accept-source-agreements
+
+Write-Output ""
+Write-Output "#"
+Write-Output "# Install eza..."
+Write-Output "#"
+
+winget install -e --id eza-community.eza --accept-package-agreements --accept-source-agreements
+
+Write-Output ""
+Write-Output "#"
 Write-Output "# Install Starship..."
 Write-Output "#"
 

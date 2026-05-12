@@ -2,7 +2,14 @@ Write-Output "#"
 Write-Output "# Install tools via winget..."
 Write-Output "#"
 
-$packages = @("Microsoft.PowerShell", "ajeetdsouza.zoxide", "eza-community.eza", "Starship.Starship")
+$packages = @(
+    "Microsoft.PowerShell",
+    "junegunn.fzf",
+    "ajeetdsouza.zoxide",
+    "eza-community.eza",
+    "Starship.Starship"
+)
+
 foreach ($pkg in $packages) {
     winget install -e --id $pkg --accept-package-agreements --accept-source-agreements --silent
 }

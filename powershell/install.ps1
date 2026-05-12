@@ -81,9 +81,7 @@ if (!(Test-Path -Path $miseConfigDir)) {
 
 Invoke-WebRequest -Uri $miseConfigUrl -OutFile $miseConfigPath
 & "$HOME\AppData\Local\Microsoft\WinGet\Packages\jdx.mise_Microsoft.Winget.Source_8wekyb3d8bbwe\mise\bin\mise.exe" "install"
-
 Write-Output "mise config installed at $miseConfigPath"
-
 
 Write-Output ""
 Write-Output "--- Setup Complete ---"

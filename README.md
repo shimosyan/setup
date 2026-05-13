@@ -10,10 +10,10 @@
 - [Starship](https://starship.rs/ja-JP/) による SHELL テーマのカスタマイズ
 - [zoxide](https://github.com/ajeetdsouza/zoxide) による cd コマンドの強化
 - [eza](https://github.com/eza-community/eza) による ls コマンドの差し替え
-- [mise](https://mise.jdx.dev/)による開発者ツール（Node.js, Python, Terraform）のバージョン管理
+- [mise](https://mise.jdx.dev/) による開発者ツール（Node.js, Python, Terraform）のバージョン管理
 - SHELL のカスタマイズ
   - zsh: [Sheldon](https://github.com/rossmacarthur/sheldon) による zsh プラグインの導入
-  - PowerShell: [PSReadLine](https://learn.microsoft.com/ja-jp/powershell/module/psreadline/)によるカスタマイズ
+  - PowerShell: [PSReadLine](https://learn.microsoft.com/ja-jp/powershell/module/psreadline/) によるカスタマイズ
 
 ## macOS
 

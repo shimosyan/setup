@@ -2,6 +2,19 @@
 
 このリポジトリは shimosyan が自身で使う端末のセットアップを楽にするためのスクリプト郡です
 
+使いたい人は fork して独自に保有することをおすすめします
+
+## feature
+
+- [Homebrew](https://brew.sh/ja/) や [Winget](https://winget.run/) によるアプリの自動インストール
+- [Starship](https://starship.rs/ja-JP/) による SHELL テーマのカスタマイズ
+- [zoxide](https://github.com/ajeetdsouza/zoxide) による cd コマンドの強化
+- [eza](https://github.com/eza-community/eza) による ls コマンドの差し替え
+- [mise](https://mise.jdx.dev/)による開発者ツール（Node.js, Python, Terraform）のバージョン管理
+- SHELL のカスタマイズ
+  - zsh: [Sheldon](https://github.com/rossmacarthur/sheldon) による zsh プラグインの導入
+  - PowerShell: [PSReadLine](https://learn.microsoft.com/ja-jp/powershell/module/psreadline/)によるカスタマイズ
+
 ## macOS
 
 zsh の環境をセットアップする

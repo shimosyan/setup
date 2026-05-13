@@ -8,8 +8,9 @@
 
 - [Homebrew](https://brew.sh/ja/) や [Winget](https://winget.run/) によるアプリの自動インストール
 - [Starship](https://starship.rs/ja-JP/) による SHELL テーマのカスタマイズ
-- [zoxide](https://github.com/ajeetdsouza/zoxide) による cd コマンドの強化
-- [eza](https://github.com/eza-community/eza) による ls コマンドの差し替え
+- [zoxide](https://github.com/ajeetdsouza/zoxide) による `cd` コマンドの強化
+- [eza](https://github.com/eza-community/eza) による `ls` コマンドの差し替え
+  - 他にも、`ll` や `lt` など派生コマンドを追加
 - [mise](https://mise.jdx.dev/) による開発者ツール（Node.js, Python, Terraform）のインストールやバージョン管理
 - SHELL のカスタマイズ
   - zsh: [Sheldon](https://github.com/rossmacarthur/sheldon) による zsh プラグインの導入

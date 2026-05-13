@@ -154,6 +154,7 @@ echo ""
 echo "#"
 echo "# Karabiner Elements settings..."
 echo "#"
+mkdir -p $HOME/.config/karabiner
 curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
 echo "complete..."
 

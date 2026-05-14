@@ -23,7 +23,7 @@ zsh の環境をセットアップする
 下記コマンドを実機のターミナルにコピペして実行
 
 ```bash
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/install.sh | sh -s
+curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/macos/install.sh | sh -s
 ```
 
 **注意事項:**

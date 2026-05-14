@@ -86,7 +86,11 @@ curl -fsSL \
 echo "complete..."
 
 log "Brew Install from Bundle file..."
-brew bundle --file "$BREWFILE"
+brew bundle --file "$BREWFILE" &
+BREW_BUNDLE_PID=$!
+
+wait "$BREW_BUNDLE_PID"
+
 echo "complete..."
 
 log "Cleaning up brew..."

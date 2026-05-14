@@ -15,6 +15,22 @@ log() {
   echo "#"
 }
 
+download_config() {
+  local url="$1"
+  local dest="$2"
+
+  local dir
+  dir="$(dirname "$dest")"
+
+  mkdir -p "$dir"
+
+  if [[ -f "$dest" ]]; then
+    mv "$dest" "$dest.backup"
+  fi
+
+  curl -fsSL "$url" -o "$dest"
+}
+
 ### sudo keep-alive
 sudo -v
 
@@ -103,29 +119,30 @@ echo "complete..."
 
 ### zsh
 log "zsh settings..."
-[ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
-curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o "$HOME/.zshrc"
+download_config \
+  "https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc" \
+  "$HOME/.zshrc"
 echo "complete..."
 
 ### starship
 log "starship settings..."
-mkdir -p "$HOME/.config"
-[ -f "$HOME/.config/starship.toml" ] && mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup"
-curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/starship.toml -o "$HOME/.config/starship.toml"
+download_config \
+  "https://raw.githubusercontent.com/shimosyan/setup/main/starship.toml" \
+  "$HOME/.config/starship.toml"
 echo "complete..."
 
 ### sheldon
 log "sheldon settings..."
-mkdir -p "$HOME/.config/sheldon"
-[ -f "$HOME/.config/sheldon/plugins.toml" ] && mv "$HOME/.config/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml.backup"
-curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/sheldon.toml -o "$HOME/.config/sheldon/plugins.toml"
+download_config \
+  "https://raw.githubusercontent.com/shimosyan/setup/main/sheldon.toml" \
+  "$HOME/.config/sheldon/plugins.toml"
 echo "complete..."
 
 ### mise
 log "mise settings..."
-mkdir -p "$HOME/.config/mise"
-[ -f "$HOME/.config/mise/config.toml" ] && mv "$HOME/.config/mise/config.toml" "$HOME/.config/mise/config.toml.backup"
-curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/mise.toml -o "$HOME/.config/mise/config.toml"
+download_config \
+  "https://raw.githubusercontent.com/shimosyan/setup/main/mise.toml" \
+  "$HOME/.config/mise/config.toml"
 if command -v mise >/dev/null 2>&1; then
   mise install
 fi
@@ -182,9 +199,9 @@ echo "complete..."
 
 ### Karabiner Elements
 log "Karabiner Elements settings..."
-mkdir -p "$HOME/.config/karabiner"
-[ -f "$HOME/.config/karabiner/karabiner.json" ] && mv "$HOME/.config/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json.backup"
-curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o "$HOME/.config/karabiner/karabiner.json"
+download_config \
+  "https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json" \
+  "$HOME/.config/karabiner/karabiner.json"
 echo "complete..."
 
 ### Complete

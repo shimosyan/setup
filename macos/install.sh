@@ -71,7 +71,6 @@ brew cleanup
 echo "complete..."
 
 ### zsh
-
 echo ""
 echo "#"
 echo "# zsh settings..."
@@ -80,7 +79,6 @@ curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o 
 echo "complete..."
 
 ### starship
-
 echo ""
 echo "#"
 echo "# starship settings..."
@@ -90,7 +88,6 @@ curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/starship.toml -o
 echo "complete..."
 
 ### sheldon
-
 echo ""
 echo "#"
 echo "# sheldon settings..."

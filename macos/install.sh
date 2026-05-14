@@ -50,7 +50,7 @@ if ! command -v brew >/dev/null 2>&1; then
   if ! xcode-select -p >/dev/null 2>&1; then
     xcode-select --install
 
-    for i in {1..60}; do
+    for i in {1..120}; do
       if xcode-select -p >/dev/null 2>&1; then
         break
       fi

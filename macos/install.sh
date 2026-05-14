@@ -27,8 +27,12 @@ done 2>/dev/null &
 SUDO_KEEPALIVE_PID=$!
 
 cleanup() {
-  kill "$SUDO_KEEPALIVE_PID" >/dev/null 2>&1 || true
-  [ -f "${BREWFILE:-}" ] && rm -f "$BREWFILE"
+  if kill -0 "$SUDO_KEEPALIVE_PID" >/dev/null 2>&1; then
+    kill "$SUDO_KEEPALIVE_PID" >/dev/null 2>&1 || true
+    wait "$SUDO_KEEPALIVE_PID" 2>/dev/null || true
+  fi
+
+  [[ -f "${BREWFILE:-}" ]] && rm -f "$BREWFILE"
 }
 
 trap cleanup EXIT

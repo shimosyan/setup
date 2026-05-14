@@ -1,5 +1,10 @@
 # Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ "$(uname -m)" == "arm64" ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+else
+  export PATH="/usr/local/bin:$PATH"
+fi
+eval "$(brew shellenv)"
 
 ### sheldon
 ### ZSH Plugins

@@ -1,5 +1,19 @@
 #!/bin/bash
-set -e
+set -euo pipefail
+
+SKIP_BREW_UPDATE="${SKIP_BREW_UPDATE:-0}"
+DEBUG="${DEBUG:-0}"
+
+if [[ "$DEBUG" == "1" ]]; then
+  set -x
+fi
+
+log() {
+  echo ""
+  echo "#"
+  echo "# $1"
+  echo "#"
+}
 
 ### sudo keep-alive
 sudo -v
@@ -10,107 +24,107 @@ while true; do
   kill -0 "$$" || exit
 done 2>/dev/null &
 
+SUDO_KEEPALIVE_PID=$!
+
+cleanup() {
+  kill "$SUDO_KEEPALIVE_PID" >/dev/null 2>&1 || true
+  [ -f "${BREWFILE:-}" ] && rm -f "$BREWFILE"
+}
+
+trap cleanup EXIT
+
 ### Homebrew
-export PATH="/opt/homebrew/bin:$PATH"
+if [[ "$(uname -m)" == "arm64" ]]; then
+  export PATH="/opt/homebrew/bin:$PATH"
+else
+  export PATH="/usr/local/bin:$PATH"
+fi
+
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+export NONINTERACTIVE=1
 
 if ! command -v brew >/dev/null 2>&1; then
-  echo "#"
-  echo "# Installing homebrew..."
-  echo "#"
+  log "Installing homebrew..."
 
   if ! xcode-select -p >/dev/null 2>&1; then
     xcode-select --install
 
-    until xcode-select -p >/dev/null 2>&1; do
+    for i in {1..60}; do
+      if xcode-select -p >/dev/null 2>&1; then
+        break
+      fi
       sleep 5
     done
+
+    if ! xcode-select -p >/dev/null 2>&1; then
+      echo "Xcode Command Line Tools installation timed out."
+      exit 1
+    fi
   fi
 
-  NONINTERACTIVE=1 /bin/bash -c \
+  /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(brew shellenv)"
   echo "complete..."
 fi
 
-echo ""
-echo "#"
-echo "# Updating homebrew..."
-echo "#"
-brew update
+if [[ "$SKIP_BREW_UPDATE" != "1" ]]; then
+  log "Updating homebrew..."
+  brew update
+  echo "complete..."
+fi
+
+log "Pull Brew Bundle file..."
+BREWFILE="$(mktemp)"
+
+curl -fsSL \
+  https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile \
+  -o "$BREWFILE"
+
 echo "complete..."
 
-brew_install(){
-  echo ""
-  echo "#"
-  echo "# Pull Brew Bundle file..."
-  echo "#"
-  curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.Brewfile -o $HOME/.Brewfile
-  echo "complete..."
+log "Brew Install from Bundle file..."
+brew bundle --file "$BREWFILE"
+echo "complete..."
 
-  echo ""
-  echo "#"
-  echo "# Brew Install from Bundle file..."
-  echo "#"
-  brew bundle --global
-  echo "complete..."
-}
-
-# プロセスをバックグラウンドで起動
-brew_install &
-pid1=$!
-
-# プロセスの終了を待つ
-wait $pid1
-
-echo ""
-echo "#"
-echo "# Cleaning up brew"
-echo "#"
-brew cleanup
+log "Cleaning up brew..."
+brew cleanup || true
 echo "complete..."
 
 ### zsh
-echo ""
-echo "#"
-echo "# zsh settings..."
-echo "#"
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o $HOME/.zshrc
+log "zsh settings..."
+[ -f "$HOME/.zshrc" ] && mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
+curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/macos/.zshrc -o "$HOME/.zshrc"
 echo "complete..."
 
 ### starship
-echo ""
-echo "#"
-echo "# starship settings..."
-echo "#"
-mkdir -p $HOME/.config
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/starship.toml -o $HOME/.config/starship.toml
+log "starship settings..."
+mkdir -p "$HOME/.config"
+[ -f "$HOME/.config/starship.toml" ] && mv "$HOME/.config/starship.toml" "$HOME/.config/starship.toml.backup"
+curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/starship.toml -o "$HOME/.config/starship.toml"
 echo "complete..."
 
 ### sheldon
-echo ""
-echo "#"
-echo "# sheldon settings..."
-echo "#"
-mkdir -p $HOME/.config/sheldon
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/sheldon.toml -o $HOME/.config/sheldon/plugins.toml
+log "sheldon settings..."
+mkdir -p "$HOME/.config/sheldon"
+[ -f "$HOME/.config/sheldon/plugins.toml" ] && mv "$HOME/.config/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml.backup"
+curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/sheldon.toml -o "$HOME/.config/sheldon/plugins.toml"
 echo "complete..."
 
 ### mise
-echo ""
-echo "#"
-echo "# mise settings..."
-echo "#"
-mkdir -p $HOME/.config/mise
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/mise.toml -o $HOME/.config/mise/config.toml
-/opt/homebrew/bin/mise install
+log "mise settings..."
+mkdir -p "$HOME/.config/mise"
+[ -f "$HOME/.config/mise/config.toml" ] && mv "$HOME/.config/mise/config.toml" "$HOME/.config/mise/config.toml.backup"
+curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/mise.toml -o "$HOME/.config/mise/config.toml"
+if command -v mise >/dev/null 2>&1; then
+  mise install
+fi
 echo "complete..."
 
 ### macOS Settings
-echo ""
-echo "#"
-echo "# macOS settings..."
-echo "#"
+log "macOS settings..."
 
 # 隠しファイルを表示する
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -147,30 +161,28 @@ defaults write com.apple.dock show-recents -bool false
 # Dock の位置を左側に変更
 defaults write com.apple.dock orientation -string "left"
 
-# Dock を再起動
-killall Dock
+# Finder, Dock を再起動
+killall Finder || true
+killall Dock || true
 
 echo "complete..."
 
 ### git
-echo ""
-echo "#"
-echo "# Git settings..."
-echo "#"
+log "Git settings..."
 git config --global core.ignorecase false
 echo "complete..."
 
 ### Karabiner Elements
-echo ""
-echo "#"
-echo "# Karabiner Elements settings..."
-echo "#"
-mkdir -p $HOME/.config/karabiner
-curl -sf https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o $HOME/.config/karabiner/karabiner.json
+log "Karabiner Elements settings..."
+mkdir -p "$HOME/.config/karabiner"
+[ -f "$HOME/.config/karabiner/karabiner.json" ] && mv "$HOME/.config/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json.backup"
+curl -fsSL https://raw.githubusercontent.com/shimosyan/setup/main/macos/karabiner.json -o "$HOME/.config/karabiner/karabiner.json"
 echo "complete..."
 
 ### Complete
+log "Setup is complete."
 echo ""
-echo "#"
-echo "# Setup is complete."
-echo "#"
+echo "Run the following command:"
+echo "source ~/.zshrc"
+echo ""
+echo "Some macOS settings may require logout or reboot."

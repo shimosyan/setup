@@ -1,19 +1,33 @@
 #!/bin/bash
+set -e
+
+### sudo keep-alive
+sudo -v
+
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
 
 ### Homebrew
 export PATH="/opt/homebrew/bin:$PATH"
 
-if test ! $(which brew); then
-  echo ""
+if ! command -v brew >/dev/null 2>&1; then
   echo "#"
   echo "# Installing homebrew..."
   echo "#"
-  sudo chown -R $(whoami):admin /usr/local
-  sudo chmod -R g+w /usr/local
 
-  xcode-select --install
+  if ! xcode-select -p >/dev/null 2>&1; then
+    xcode-select --install
 
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    until xcode-select -p >/dev/null 2>&1; do
+      sleep 5
+    done
+  fi
+
+  NONINTERACTIVE=1 /bin/bash -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
   echo "complete..."

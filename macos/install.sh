@@ -197,6 +197,11 @@ log "Git settings..."
 git config --global core.ignorecase false
 echo "complete..."
 
+### docker & colima
+log "Docker settings..."
+ln -sfn /opt/homebrew/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+echo "complete..."
+
 ### Karabiner Elements
 log "Karabiner Elements settings..."
 download_config \

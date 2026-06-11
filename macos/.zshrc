@@ -38,9 +38,6 @@ eval "$(zoxide init zsh)"
 # mise
 eval "$(mise activate zsh)"
 
-### Git
-export PATH="/usr/local/git/bin:$PATH"
-
 ### OpenSSL
 export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
 
